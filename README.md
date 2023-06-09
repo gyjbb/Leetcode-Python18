@@ -94,9 +94,73 @@ class Solution:
 ## 501. Find Mode in Binary Search Tree
 [leetcode](https://leetcode.com/problems/find-mode-in-binary-search-tree/)\
 二叉搜索树中的众数， one code skill here!\
-对于搜索数
+对于搜索数，还是使用中序遍历，中是处理逻辑，计算节点值的count。\
+pre = cur,把cur的值赋给pre，在下一层循环cur自动更新到下一个节点时，pre帮助记录了上一个节点，也跟着移动了。\
+max_count及时更新，result结果集清空，装入新的数值。
+```python
+# ways 1: recursion, 利用中序递增
+class Solution:
+    def __init__(self):
+        self.maxCount = 0   # 最大频率
+        self.count = 0      # 统计频率
+        self.pre = None
+        self.result  = []
 
+    def searchBST(self, cur):
+        if cur is None:
+            return      #什么也不return
+        
+        self.searchBST(cur.left)    #left
+        #middle
+        if self.pre is None:   #第一个节点
+            self.count = 1
+        elif self.pre.val == cur.val:   #与前一个节点数值相同
+            self.count += 1
+        else:   #与前一个节点数值不同
+            self.count = 1
+        self.pre = cur   #更新上一个节点
 
+        if self.count == self.maxCount:   #如果与最大值频率相同，放进result
+            self.result.append(cur.val)
+        if self.count > self.maxCount:    # 如果计数大于最大值频率
+            self.maxCount = self.count    # 更新最大频率
+            self.result = [cur.val]  # 很关键的一步，不要忘记清空result，之前result里的元素都失效了
+
+        self.searchBST(cur.right)    #right
+        return
+
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        self.count = 0
+        self.maxCount = 0
+        self.pre = None     #记录前一个节点
+        self.result = []
+
+        self.searchBST(root)
+        return self.result
+```
+```python
+# ways 2: use dictionary
+from collections import defaultdict
+class Solution:
+    def searchBST(self, cur, freq_map):
+        if cur is None:
+            return
+        freq_map[cur.val] += 1
+        self.searchBST(cur.left, freq_map)
+        self.searchBST(cur.right, freq_map)
+
+    def findMode(self, root: Optional[TreeNode]) -> List[int]:
+        freq_map = defaultdict(int)  # key:元素，value:出现频率
+        result = []
+        if root is None:
+            return result
+        self.searchBST(root, freq_map)
+        max_freq = max(freq_map.values())
+        for key, freq in freq_map.items():
+            if freq == max_freq:
+                result.append(key)
+        return result
+```
 
 
 ## 236. 
