@@ -1,12 +1,12 @@
 # Leetcode-Python18
 
-## 530. Minimum Absolute Difference in BST， 501. Find Mode in Binary Search Tree
+## 530. Minimum Absolute Difference in BST， 501. Find Mode in Binary Search Tree, 236. Lowest Common Ancestor of a Binary Tree
 
 June 09, 2023  4h
 
 Congratulations!\
 This is the twelfth day for leetcode python study. Today we will learn more about the Binary Tree!\
-The challenges today are about ~~need to delete later~~.
+The challenges today are about using rrecursion and inorder traversal to search in binary search trees, and using postorder traversal to deal with the traceback(回溯) and build middle logic.
 
 
 ## 530. Minimum Absolute Difference in BST
@@ -163,6 +163,18 @@ class Solution:
 ```
 
 
-## 236. 
-二叉树的最近公共祖先, hard!
+## 236. Lowest Common Ancestor of a Binary Tree
+[leetcode](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)\
+二叉树的最近公共祖先, hard! 开始使用**后序遍历**， **回溯的过程是中，中里有处理逻辑**。
+
+
+
+
+
+
+
+
+
+
+
 
