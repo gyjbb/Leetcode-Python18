@@ -15,7 +15,8 @@ The challenges today are about ~~need to delete later~~.
 [video](https://www.bilibili.com/video/BV1DD4y11779/?spm_id_from=pageDriver&vd_source=63f26efad0d35bcbb0de794512ac21f3)\
 二叉搜索树的最小绝对差，二叉树遍历上**双指针**操作，优先掌握递归。\
 此处定义一个全局变量去记录节点间最小差值，函数就没有返回值了。return; 表示什么也不return。\
-pre如何紧跟cur成为当前遍历节点的前一个节点呢？pre = cur
+pre如何紧跟cur成为当前遍历节点的前一个节点呢？pre = cur\
+前两种方法都用了递归，第三种方法用了迭代+stack来实现的！
 ```python
 # ways 1: recursion, 利用中序递增，结合数组
 # Definition for a binary tree node.
