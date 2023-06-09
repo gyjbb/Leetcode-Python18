@@ -1,6 +1,6 @@
 # Leetcode-Python18
 
-## 530. Minimum Absolute Difference in BST
+## 530. Minimum Absolute Difference in BST， 501. Find Mode in Binary Search Tree
 
 June 09, 2023  4h
 
@@ -91,9 +91,10 @@ class Solution:
 ```
 
 
-## 501.
-二叉搜索树中的众数， one code skill here!
-
+## 501. Find Mode in Binary Search Tree
+[leetcode](https://leetcode.com/problems/find-mode-in-binary-search-tree/)\
+二叉搜索树中的众数， one code skill here!\
+对于搜索数
 
 
 
