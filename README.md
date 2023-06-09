@@ -165,8 +165,37 @@ class Solution:
 
 ## 236. Lowest Common Ancestor of a Binary Tree
 [leetcode](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)\
-二叉树的最近公共祖先, hard! 开始使用**后序遍历**， **回溯的过程是中，中里有处理逻辑**。
+[reading is so cool!](https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88.md)\
+二叉树的最近公共祖先, hard! 开始使用**后序遍历**，从下往上遍历。 **回溯的过程是中，中里有处理逻辑**。后序遍历（左右中）就是天然的回溯过程，可以根据左右子树的返回值，来处理中节点的逻辑。\
+判断左子树是否有p，右子树是否有q。如果遇到了p就向上返回。在中的判断逻辑中，如果中的左子树的返回值不为空，则出现了p/q，右子树同理。左右子树都不为空，则当前的节点就是最近公共祖先。\
+确定终止条件2：root在往下便利的过程中，遇到了根节点p/q, 返回root，即p/q。\
+单层逻辑：左子树告诉我们左子树有没有出现过p/q。左子树先不断往下遍历，得到结果，然后右子树不断往下遍历得到结果，最后再判断中的逻辑。
+```python
+# ways 1: recursion
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if root == p or root == q or root is None:
+            return root
+
+        left = self.lowestCommonAncestor(root.left, p, q)   #left
+        right = self.lowestCommonAncestor(root.right, p, q)   #right
+
+        if left is not None and right is not None:
+            return root
+        if left is None and right is not None:
+            return right
+        elif left is not None and right is None:
+            return left
+        else: 
+            return None
+```           
 
 
 
